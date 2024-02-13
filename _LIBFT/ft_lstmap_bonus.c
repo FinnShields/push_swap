@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_operations.c                                  :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fshields <fshields@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 16:21:13 by fshields          #+#    #+#             */
-/*   Updated: 2023/12/21 16:56:27 by fshields         ###   ########.fr       */
+/*   Created: 2023/11/08 09:32:18 by fshields          #+#    #+#             */
+/*   Updated: 2023/11/11 15:12:52 by fshields         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-void	pa(t_int_list **stack_a, t_int_list **stack_b)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_int_list	*temp;
+	t_list	*new;
+	t_list	*rtn;
+	void	*v_ptr;
 
-	if (!(*stack_b))
-		return ;
-	temp = *stack_b;
-	*stack_b = (*stack_b)->next;
-	temp->next = *stack_a;
-	*stack_a = temp;
-}
-
-void	pb(t_int_list **stack_a, t_int_list **stack_b)
-{
-	t_int_list	*temp;
-
-	if (!(*stack_a))
-		return ;
-	temp = *stack_a;
-	*stack_a = (*stack_a)->next;
-	temp->next = *stack_b;
-	*stack_b = temp;
+	if (!lst || !f || !del)
+		return (NULL);
+	rtn = NULL;
+	while (lst)
+	{
+		v_ptr = (*f)(lst->content);
+		new = ft_lstnew(v_ptr);
+		if (!new)
+		{
+			free(v_ptr);
+			ft_lstclear(&rtn, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&rtn, new);
+		lst = lst->next;
+	}
+	return (rtn);
 }

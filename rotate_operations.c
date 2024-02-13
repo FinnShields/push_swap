@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotate_operations.c                            :+:      :+:    :+:   */
+/*   rotate_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fshields <fshields@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 12:52:39 by fshields          #+#    #+#             */
-/*   Updated: 2023/12/21 16:57:11 by fshields         ###   ########.fr       */
+/*   Created: 2023/12/18 16:39:53 by fshields          #+#    #+#             */
+/*   Updated: 2024/01/15 12:07:53 by fshields         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-static void	rev_rotate(t_int_list **stack)
+static void	rotate(t_int_list **stack)
 {
 	t_int_list	*temp;
 	t_int_list	*last;
@@ -20,26 +20,29 @@ static void	rev_rotate(t_int_list **stack)
 	if (ft_int_lstsize(*stack) <= 1)
 		return ;
 	temp = *stack;
-	while ((*stack)->next->next != NULL)
-		*stack = (*stack)->next;
-	last = *stack;
 	*stack = (*stack)->next;
-	(*stack)->next = temp;
-	last->next = NULL;
+	last = *stack;
+	while (last->next != NULL)
+		last = last->next;
+	last->next = temp;
+	last->next->next = NULL;
 }
 
-void	rra(t_int_list **stack_a)
+void	ra(t_int_list **stack_a)
 {
-	rev_rotate(stack_a);
+	rotate(stack_a);
+	ft_printf("ra\n");
 }
 
-void	rrb(t_int_list **stack_b)
+void	rb(t_int_list **stack_b)
 {
-	rev_rotate(stack_b);
+	rotate(stack_b);
+	ft_printf("rb\n");
 }
 
-void	rrr(t_int_list **stack_a, t_int_list **stack_b)
+void	rr(t_int_list **stack_a, t_int_list **stack_b)
 {
-	rev_rotate(stack_a);
-	rev_rotate(stack_b);
+	rotate(stack_a);
+	rotate(stack_b);
+	ft_printf("rr\n");
 }

@@ -6,7 +6,7 @@
 /*   By: fshields <fshields@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 13:34:00 by fshields          #+#    #+#             */
-/*   Updated: 2023/12/21 16:57:42 by fshields         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:24:12 by fshields         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	input_1(char *argv[])
 	int	i;
 
 	i = 0;
+	if (argv[1][i] == '\0')
+		return (1);
 	if (argv[1][i] == '-')
 	{
 		if (ft_isdigit(argv[1][i + 1]) == 0)
@@ -81,7 +83,6 @@ int	valid_input(int argc, char *argv[])
 	return (0);
 }
 
-//checks for duplicate numbers in stack (1 returned if they're found)
 int	check_duplicates(t_int_list *stack)
 {
 	t_int_list	*check;
@@ -100,4 +101,15 @@ int	check_duplicates(t_int_list *stack)
 		stack = check->next;
 	}
 	return (0);
+}
+
+int	all_space(char *str)
+{
+	while (*str)
+	{
+		if (*str != ' ')
+			return (0);
+		str ++;
+	}
+	return (1);
 }

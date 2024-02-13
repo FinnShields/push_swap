@@ -1,15 +1,14 @@
 NAME		=	push_swap
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
-SRCS		=	main.c algorithm.c init_stack.c utils.c \
-				valid_input.c stack_analysis.c \
-				./operations/*.c
+SRCS		=	*.c 			
 LIBFT_PATH	=	./_LIBFT
 LIBFT		=	$(LIBFT_PATH)/libft.a
+HEADER		=	push_swap.h
 
 all:			$(NAME)
 
-$(NAME):		$(LIBFT) $(OBJS)
+$(NAME):		$(LIBFT) $(OBJS) $(HEADER)
 					@$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
 					@echo "|p        |"
 					@echo "| u       |"

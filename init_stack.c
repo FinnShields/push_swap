@@ -6,7 +6,7 @@
 /*   By: fshields <fshields@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 13:56:08 by fshields          #+#    #+#             */
-/*   Updated: 2023/12/21 16:59:28 by fshields         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:18:17 by fshields         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	*new_arr(char *str, int len)
 	while (*str)
 	{
 		*(arr++) = ft_atoi(str);
-		if ((long) ft_atoi(str) != ft_atoi_long(str))
+		if ((long long) ft_atoi(str) != ft_atoi_long(str))
 		{
 			free(arr_start);
 			return (NULL);
@@ -57,6 +57,8 @@ static t_int_list	*init_type_1(char *argv[])
 
 	i = 1;
 	len = count_numbers(argv[1]);
+	if (!len)
+		return (NULL);
 	stack = NULL;
 	values = new_arr(argv[1], len);
 	if (!values)

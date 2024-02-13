@@ -1,5 +1,4 @@
 # push_swap
-Early version of my push_swap project from Hive Helsinki
+My version of Push_Swap from Hive Helsinki.
 
-The project works, but the algorithm is a little slow.
-I'll be fixing it early next year...
+To compile, simply run 'make'. The program will sort integers given as arguments in as short a number of steps as it can, printing the steps in takes to the standard output.

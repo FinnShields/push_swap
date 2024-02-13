@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_operations.c                                  :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fshields <fshields@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 15:51:57 by fshields          #+#    #+#             */
-/*   Updated: 2023/12/21 16:58:35 by fshields         ###   ########.fr       */
+/*   Created: 2023/10/24 15:11:18 by fshields          #+#    #+#             */
+/*   Updated: 2023/11/05 13:02:53 by fshields         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-static void	swap(t_int_list *stack)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int	temp;
+	size_t	i;
+	char	*char_dst;
+	char	*char_src;
 
-	if (!stack || ft_int_lstsize(stack) <= 1)
-		return ;
-	temp = stack->value;
-	stack->value = stack->next->value;
-	stack->next->value = temp;
-}
-
-void	sa(t_int_list *stack_a)
-{
-	swap(stack_a);
-}
-
-void	sb(t_int_list *stack_b)
-{
-	swap(stack_b);
-}
-
-void	ss(t_int_list *stack_a, t_int_list *stack_b)
-{
-	swap(stack_a);
-	swap(stack_b);
+	i = 0;
+	char_dst = (char *) dst;
+	char_src = (char *) src;
+	while (i < n && !(dst == NULL && src == NULL))
+	{
+		char_dst[i] = char_src[i];
+		i ++;
+	}
+	return (dst);
 }
