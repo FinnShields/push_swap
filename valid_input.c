@@ -71,11 +71,6 @@ static int	input_2(int argc, char *argv[])
 //and 2 if the input is many strings
 int	valid_input(int argc, char *argv[])
 {
-	int	i;
-	int	j;
-
-	i = 1;
-	j = 0;
 	if (argc == 2)
 		return (input_1(argv));
 	else if (argc > 2)
